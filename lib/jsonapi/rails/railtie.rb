@@ -13,7 +13,7 @@ module JSONAPI
         data = JSON.parse(body)
         hash = { _jsonapi: data }
 
-        hash.deep_dtransform_keys(&:underscore).with_indifferent_access
+        hash.with_indifferent_access
       end
       RENDERERS = {
         jsonapi:        SuccessRenderer.new,
