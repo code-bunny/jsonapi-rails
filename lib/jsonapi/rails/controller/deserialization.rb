@@ -49,7 +49,7 @@ module JSONAPI
                     Class.new(JSONAPI::Rails::DeserializableResource, &block)
 
             before_action(options) do |controller|
-              hash = controller.params.to_unsafe_hash[:_jsonapi].deep_transform_keys(&:underscore)
+              hash = controller.params.to_unsafe_hash[:_jsonapi]
               if hash.nil?
                 JSONAPI::Rails.logger.warn do
                   "Unable to deserialize #{key} because no JSON API payload was" \
@@ -57,6 +57,8 @@ module JSONAPI
                 end
                 next
               end
+
+              hash = hash.deep_transform_keys!(&:underscore)
 
               ActiveSupport::Notifications
                 .instrument('parse.jsonapi-rails',
