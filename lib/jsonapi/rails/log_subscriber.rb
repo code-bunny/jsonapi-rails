@@ -16,11 +16,7 @@ module JSONAPI
       end
 
       def logger
-        @logger ||= JSONAPI::Rails.logger
-      end
-
-      def logger=(logger)
-        @logger = logger
+        JSONAPI::Rails.logger
       end
     end
   end

@@ -3,7 +3,11 @@ module JSONAPI
     # @private
     module Logging
       def logger
-        config[:logger]
+        @logger ||= config[:logger]
+      end
+
+      def logger=(logger)
+        @logger = logger
       end
     end
   end
