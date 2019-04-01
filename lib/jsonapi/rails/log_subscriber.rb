@@ -22,4 +22,4 @@ module JSONAPI
   end
 end
 
-JSONAPI::Rails::LogSubscriber.attach_to :'jsonapi-rails'
+# JSONAPI::Rails::LogSubscriber.attach_to :'jsonapi-rails'
